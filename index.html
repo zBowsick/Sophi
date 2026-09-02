@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Invitación a fiesta de cumpleaños de Minecraft">
+  <title>¡Cumpleaños de Sophia! ⛏️</title>
+  
+  <style>
+    :root {
+      --minecraft-green: #5b8731;
+      --minecraft-dark-green: #38531e;
+      --minecraft-dirt: #866043;
+      --minecraft-wood: #513926;
+      --minecraft-gold: #fbc02d;
+      --text-color: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+    }
+
+    body {
+      background-color: #121212;
+      background-image: 
+        radial-gradient(#2c2c2c 15%, transparent 16%),
+        radial-gradient(#2c2c2c 15%, transparent 16%);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 15px;
+      overflow: hidden;
+    }
+
+    /* Escena Principal */
+    .scene {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Contenedor de la Invitación */
+    .card {
+      background-color: var(--minecraft-dirt);
+      border: clamp(4px, 1.5vw, 8px) solid var(--minecraft-wood);
+      box-shadow: 
+        inset 0 clamp(4px, 1.5vw, 8px) 0 var(--minecraft-green),
+        0 10px 0 #000;
+      width: 100%;
+      padding: clamp(20px, 5vw, 35px) clamp(12px, 4vw, 25px);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .grass-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: clamp(10px, 2.5vw, 16px);
+      background-color: var(--minecraft-green);
+      border-bottom: 3px solid var(--minecraft-dark-green);
+    }
+
+    h1 {
+      color: var(--minecraft-gold);
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      text-shadow: 2px 2px #000;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+      margin-bottom: 20px;
+      color: #e0e0e0;
+      text-shadow: 2px 2px #000;
+      line-height: 1.4;
+    }
+
+    .details {
+      background: rgba(0, 0, 0, 0.75);
+      border: 3px solid #000;
+      padding: clamp(10px, 3vw, 18px);
+      margin: 15px 0;
+      text-align: left;
+      font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+      line-height: 1.8;
+      word-break: break-word;
+    }
+
+    .details p span {
+      color: var(--minecraft-gold);
+    }
+
+    .btn {
+      background-color: #727272;
+      border: 4px solid #000;
+      border-top-color: #aeaeae;
+      border-left-color: #aeaeae;
+      color: #fff;
+      padding: clamp(10px, 3vw, 14px);
+      font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+      cursor: pointer;
+      width: 100%;
+      text-shadow: 2px 2px #000;
+      transition: all 0.1s ease;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: var(--minecraft-green);
+      border-top-color: #8ed645;
+      border-left-color: #8ed645;
+    }
+
+    .btn:active {
+      transform: translateY(2px);
+    }
+
+    /* Órbita Responsiva en 360° */
+    .orbit-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .orbiting-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(35px, 10vw, 60px);
+      height: clamp(35px, 10vw, 60px);
+      margin-top: calc(-1 * clamp(35px, 10vw, 60px) / 2);
+      margin-left: calc(-1 * clamp(35px, 10vw, 60px) / 2);
+      image-rendering: pixelated;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.8));
+    }
+
+    .item-1 { animation: orbit1 6s linear infinite; }
+    .item-2 { animation: orbit2 6s linear infinite; }
+    .item-3 { animation: orbit3 6s linear infinite; }
+
+    @keyframes orbit1 {
+      0%   { transform: rotate(0deg) translateX(min(40vw, 300px)) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(min(40vw, 300px)) rotate(-360deg); }
+    }
+
+    @keyframes orbit2 {
+      0%   { transform: rotate(120deg) translateX(min(40vw, 300px)) rotate(-120deg); }
+      100% { transform: rotate(480deg) translateX(min(40vw, 300px)) rotate(-480deg); }
+    }
+
+    @keyframes orbit3 {
+      0%   { transform: rotate(240deg) translateX(min(40vw, 300px)) rotate(-240deg); }
+      100% { transform: rotate(600deg) translateX(min(40vw, 300px)) rotate(-600deg); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="card">
+      <div class="grass-top"></div>
+      
+      <h1>¡Nivel Desbloqueado!<br>¡Sophia Cumple Años!</h1>
+      <p class="subtitle">Estás invitado a una aventura épica en el Overworld</p>
+
+      <div class="details">
+        <p>📅 <span>FECHA:</span> Domingo, 6 de septiembre</p>
+        <p>⏰ <span>HORA:</span> 1:00 PM</p>
+        <p>📍 <span>COORDENADAS:</span> Cra. 71B # 51-58</p>
+        <p>⚔️ <span>MODO:</span> Supervivencia & Fiesta</p>
+      </div>
+
+      <button class="btn" onclick="confirmarAsistencia()">Confirmar Asistencia</button>
+    </div>
+
+    <div class="orbit-container">
+      <img src="./img/bf8563844e76ab0cba051f5cc316c7fb.jpg" alt="Enderman" class="orbiting-item item-1">
+      <img src="./img/images.jpg" alt="Creeper" class="orbiting-item item-2">
+      <img src="./img/big-steve-face.png" alt="Diamante" class="orbiting-item item-3">
+    </div>
+  </div>
+
+  <script>
+    function confirmarAsistencia() {
+      const mensaje = encodeURIComponent("¡Hola Sophia! Confirmo mi asistencia a tu fiesta de cumpleaños de Minecraft ⛏️🎉");
+      const numeroTelefono = "3132856404";
+      window.open(`https://wa.me/${numeroTelefono}?text=${mensaje}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
